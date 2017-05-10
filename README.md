@@ -5,21 +5,27 @@
 cd ../Kubernetes-Multi-Pod-Demo
 
 kubectl create -f db-pod.yml
+
 kubectl create -f db-svc.yml
+
 kubectl create -f web-pod-1.yml
+
 kubectl create -f web-svc.yml
 
 # Check that the Pods and Services are created
 
 kubectl get pods
+
 kubectl get svc
 
 # Get the IP address of one of the Nodes and the NodePort for the web Service. Populate the variables with the appropriate values
 
 kubectl get nodes
+
 kubectl describe svc web
 
 kubectl get nodes
+
 export NODE_IP=<#NODE_IP#>
 
 export NODE_PORT=<#NODE_PORT#>
@@ -49,4 +55,5 @@ curl http://$NODE_IP:$NODE_PORT/users/1
 # Create 10 Replica Sets and check the data
 
 kubectl create -f web-rc.yml
+
 curl http://$NODE_IP:$NODE_PORT/users/1
