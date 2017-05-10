@@ -21,6 +21,7 @@ kubectl describe svc web
 
 kubectl get nodes
 export NODE_IP=<#NODE_IP#>
+
 export NODE_PORT=<#NODE_PORT#>
 
 # Initialize the database with sample schema
@@ -30,8 +31,11 @@ curl http://$NODE_IP:$NODE_PORT/init
 # Insert some sample data
 
 curl -i -H "Content-Type: application/json" -X POST -d '{"uid": "1", "user":"John Doe"}' http://$NODE_IP:$NODE_PORT/users/add
+
 curl -i -H "Content-Type: application/json" -X POST -d '{"uid": "2", "user":"Jane Doe"}' http://$NODE_IP:$NODE_PORT/users/add
+
 curl -i -H "Content-Type: application/json" -X POST -d '{"uid": "3", "user":"Bill Collins"}' http://$NODE_IP:$NODE_PORT/users/add
+
 curl -i -H "Content-Type: application/json" -X POST -d '{"uid": "4", "user":"Mike Taylor"}' http://$NODE_IP:$NODE_PORT/users/add
 
 # Access the data
